@@ -1,0 +1,26 @@
+# YOLOv5 可视化检测系统 - Python 依赖
+# 注意: 建议使用 run.bat 自动安装,以下手动安装参考
+#
+# 核心依赖:
+#   pip install PyQt5 opencv-python Pillow numpy==1.26.4 pandas scipy seaborn
+#   pip install ultralytics tqdm pyyaml psutil thop gitpython
+#
+# PyTorch (CPU 版):
+#   pip install torch==2.3.1+cpu torchvision==0.18.1+cpu --index-url https://download.pytorch.org/whl/cpu
+#
+# PyTorch (GPU 版，根据 CUDA 版本选择):
+#   访问 https://pytorch.org/get-started/locally/ 获取对应命令
+
+PyQt5>=5.15.0
+opencv-python>=4.8.0
+Pillow>=10.0.0
+numpy==1.26.4
+pandas>=2.0.0
+scipy>=1.10.0
+seaborn>=0.12.0
+ultralytics>=8.0.0
+tqdm>=4.65.0
+pyyaml>=6.0
+psutil>=5.9.0
+thop>=0.1.1
+gitpython>=3.1.0
