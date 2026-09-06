@@ -33,7 +33,7 @@ YOLOv5 可视化检测系统 - 桌面版目标检测工具
 
 ```bash
 # 克隆仓库
-git clone https://github.com/你的用户名/YOLOv5-VisionHub.git
+git clone https://github.com/HAO7919/YOLOv5-VisionHub.git
 cd YOLOv5-VisionHub
 
 # 安装依赖
@@ -76,7 +76,9 @@ pyinstaller yolov5_app.spec --clean --noconfirm
 
 ## 许可证
 
-MIT License
+GNU General Public License v3.0 (GPL-3.0)
+
+本项目采用 GPL-3.0 协议，禁止用于商业售卖。修改或分发本软件时必须保持开源并使用相同协议。
 
 ## 免责声明
 
