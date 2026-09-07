@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YOLOv5-VisionHub - 桌面版目标检测工具</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <span class="logo-icon">🎯</span>
+                <span class="logo-text">YOLOv5-VisionHub</span>
+            </div>
+            <div class="nav-links">
+                <a href="#features">功能</a>
+                <a href="#quickstart">快速开始</a>
+                <a href="#screenshots">截图</a>
+                <a href="#faq">常见问题</a>
+                <a href="https://github.com/HAO7919/YOLOv5-VisionHub" target="_blank" class="btn-github">GitHub</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-content">
+            <h1>YOLOv5 可视化检测系统</h1>
+            <p class="subtitle">桌面版目标检测工具 · 开箱即用 · 支持自定义模型</p>
+            <div class="hero-buttons">
+                <a href="https://github.com/HAO7919/YOLOv5-VisionHub/releases" target="_blank" class="btn-primary">下载使用</a>
+                <a href="https://github.com/HAO7919/YOLOv5-VisionHub" target="_blank" class="btn-secondary">查看源码</a>
+            </div>
+            <div class="hero-badges">
+                <span class="badge">Windows 10+</span>
+                <span class="badge">CPU/GPU 自适应</span>
+                <span class="badge">9种语言</span>
+                <span class="badge">GPL-3.0</span>
+            </div>
+        </div>
+    </header>
+
+    <section id="features" class="features">
+        <h2>核心功能</h2>
+        <div class="feature-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🖼️</div>
+                <h3>图片检测</h3>
+                <p>打开图片一键检测，支持导出 JSON、CSV、VOC XML 格式结果</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🎬</div>
+                <h3>视频检测</h3>
+                <p>视频文件逐帧检测，自动保存带检测框的结果视频</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📷</div>
+                <h3>摄像头实时检测</h3>
+                <p>调用摄像头实时检测，支持截图保存，独立线程不卡UI</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🖥️</div>
+                <h3>屏幕实时检测</h3>
+                <p>实时捕获屏幕内容进行检测，叠加显示检测框</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🧠</div>
+                <h3>多模型支持</h3>
+                <p>支持 YOLOv5/v8/v9/v10/v11，可加载自己训练的模型</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">⚙️</div>
+                <h3>参数可调</h3>
+                <p>置信度阈值、IOU阈值、最大检测数、线条粗细自由调节</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🌍</div>
+                <h3>多语言界面</h3>
+                <p>支持中、英、日、韩、法、德、西、俄、葡 9 种语言</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📊</div>
+                <h3>历史记录</h3>
+                <p>自动记录最近检测，方便回看和对比</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="quickstart" class="quickstart">
+        <h2>快速开始</h2>
+        <div class="steps">
+            <div class="step">
+                <div class="step-number">1</div>
+                <h3>下载</h3>
+                <p>从 GitHub Releases 下载最新压缩包</p>
+            </div>
+            <div class="step-arrow">→</div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <h3>解压</h3>
+                <p>解压到任意目录，路径不要有中文</p>
+            </div>
+            <div class="step-arrow">→</div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <h3>运行</h3>
+                <p>双击 YOLO检测工具.exe 启动</p>
+            </div>
+            <div class="step-arrow">→</div>
+            <div class="step">
+                <div class="step-number">4</div>
+                <h3>检测</h3>
+                <p>选择图片/视频/摄像头，开始检测</p>
+            </div>
+        </div>
+        <div class="code-block">
+            <h4>从源码运行</h4>
+            <pre><code>git clone https://github.com/HAO7919/YOLOv5-VisionHub.git
+cd YOLOv5-VisionHub
+pip install -r requirements.txt
+python main.py</code></pre>
+        </div>
+    </section>
+
+    <section id="faq" class="faq">
+        <h2>常见问题</h2>
+        <div class="faq-list">
+            <div class="faq-item">
+                <button class="faq-question">需要安装 Python 吗？</button>
+                <div class="faq-answer">
+                    <p>下载 Release 打包版不需要，双击 exe 就能用。从源码运行才需要 Python 3.8+。</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">没有 NVIDIA 显卡能用吗？</button>
+                <div class="faq-answer">
+                    <p>可以。程序会自动检测，有 GPU 用 GPU，没有就自动用 CPU，只是速度慢一些。</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">怎么用自己训练的模型？</button>
+                <div class="faq-answer">
+                    <p>把训练好的 .pt 文件放到 models/ 目录，重启软件，在左侧模型管理里选择并切换即可。</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">支持哪些模型格式？</button>
+                <div class="faq-answer">
+                    <p>支持 YOLOv5、v8、v9、v10、v11 的 .pt 模型文件，旧版模型也有兼容处理。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>YOLOv5-VisionHub · GPL-3.0 License · 仅供学习研究使用</p>
+        <p><a href="https://github.com/HAO7919/YOLOv5-VisionHub" target="_blank">GitHub</a></p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
