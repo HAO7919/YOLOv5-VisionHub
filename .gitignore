@@ -39,6 +39,10 @@ output/
 *.jpeg
 *.png
 
+# 截图不忽略
+!screenshots/*.png
+!screenshots/*.jpg
+
 # 配置和日志
 config.json
 *.log
