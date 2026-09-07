@@ -45,6 +45,21 @@ YOLOv5 Visual Detection System - Desktop Object Detection Tool
 
 Put your trained `.pt` file into the `models/` directory, restart the software, and select and switch to it in the "Model Management" panel on the left.
 
+## Docker
+
+Want to run in Docker? See [DOCKER.md](DOCKER.md) for detailed instructions. Supports both CPU and GPU versions.
+
+> **Note:** Docker images are larger than the exe package because they include a full system environment. For regular Windows users, the exe release is simpler and smaller.
+
+## Package Size Explanation
+
+The release package is ~3GB because it bundles:
+- **PyTorch + CUDA** (~2GB): Required for GPU acceleration, this is the bulk of the size
+- **OpenCV, PyQt5, and other dependencies** (~500MB)
+- **4 pre-trained YOLO models** (~200MB)
+
+**If you don't need GPU:** The software automatically falls back to CPU. You can also delete unused model files from the `models/` folder to save space.
+
 ---
 
 ## Developers: Run from Source

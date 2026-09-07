@@ -1,0 +1,41 @@
+version: '3.8'
+
+services:
+  # CPU版本（体积小，约2GB）
+  yolov5-cpu:
+    build:
+      context: .
+      args:
+        DEVICE: cpu
+    image: yolov5-visionhub:cpu
+    container_name: yolov5-visionhub-cpu
+    environment:
+      - DISPLAY=${DISPLAY}
+      - QT_X11_NO_MITSHM=1
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix
+      - ./models:/app/models
+      - ./output:/app/output
+    network_mode: host
+    restart: unless-stopped
+
+  # GPU版本（体积大，约5GB，需要nvidia-docker）
+  yolov5-gpu:
+    build:
+      context: .
+      args:
+        DEVICE: gpu
+    image: yolov5-visionhub:gpu
+    container_name: yolov5-visionhub-gpu
+    environment:
+      - DISPLAY=${DISPLAY}
+      - QT_X11_NO_MITSHM=1
+      - NVIDIA_VISIBLE_DEVICES=all
+      - NVIDIA_DRIVER_CAPABILITIES=all
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix
+      - ./models:/app/models
+      - ./output:/app/output
+    network_mode: host
+    runtime: nvidia
+    restart: unless-stopped
