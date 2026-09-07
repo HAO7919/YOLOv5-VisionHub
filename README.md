@@ -20,6 +20,14 @@ YOLOv5 Visual Detection System - Desktop Object Detection Tool
 - **Adjustable Parameters** - Confidence threshold, IOU threshold, max detections, line thickness
 - **History Records** - Automatically records recent detections for easy review
 
+## Screenshots
+
+### Main Interface
+![Main Interface](screenshots/main-interface.png)
+
+### Screen Real-time Detection
+![Screen Detection](screenshots/screen-detection.png)
+
 ## System Requirements
 
 - Windows 10 or later (64-bit)

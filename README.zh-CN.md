@@ -20,6 +20,14 @@ YOLOv5 可视化检测系统 - 桌面版目标检测工具
 - **参数可调** - 置信度阈值、IOU 阈值、最大检测数、线条粗细
 - **历史记录** - 自动记录最近检测，方便回看
 
+## 界面截图
+
+### 主界面
+![主界面](screenshots/main-interface.png)
+
+### 屏幕实时检测
+![屏幕检测](screenshots/screen-detection.png)
+
 ## 系统要求
 
 - Windows 10 及以上（64位）
