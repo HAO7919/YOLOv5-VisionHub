@@ -1,14 +1,15 @@
-# Docker 怎么用
 
-## 先说体积（说实话）
+Docker 使用指南
 
-| 版本 | 大小 | 说明 |
+首先说体积（说实话）
+
+-v ${PWD}/output:/app/output ` 版本 | 大小 | 说明 |
 |------|------|------|
 | CPU稳定版 | 约1.5GB | 用slim基础镜像，兼容性好 |
 | CPU超轻量版 | 约1GB | 用alpine基础镜像，可能有兼容性问题 |
 | GPU版 | 约4GB | 带CUDA，想快就得大 |
 
-**为啥还是这么大？** 因为PyTorch本身就占了1GB左右，这东西就是这么臃肿，不是咱代码的问题。Dockerfile能优化的都优化了，再小就得换技术栈了。
+**为啥还是这么大？** 因为PyTorch本身就占了1GB左右，Dockerfile能优化的都优化了，再小就得换技术栈了。
 
 **想真正小？** 把PyTorch换成ONNX Runtime，镜像能降到500MB以下。但这得改代码，把模型转成onnx格式，推理部分也得重写。有兴趣自己研究，这里就不提供了。
 
@@ -21,20 +22,21 @@
 docker build -f Dockerfile.lite -t yolov5-visionhub:lite .
 
 # 运行
-docker run -it --rm `
+`docker run -it --rm `
   -e DISPLAY=host.docker.internal:0 `
   -v ${PWD}/models:/app/models `
   -v ${PWD}/output:/app/output `
-  yolov5-visionhub:lite
+yolov5-visionhub:lite
+“```”
+
+## 你需要先安装什么
+
+1. Docker Desktop：直接到官网下载并安装即可
+2. Windows 用户还需要安装 WSL2（安装 Docker 时会提示你）
+3. 如果想用 GPU 加速，还需要安装 nvidia-docker
+
+## 如何运行  
 ```
-
-## 你需要先装啥
-
-1. Docker Desktop：官网下载装上就行
-2. Windows用户还得装WSL2（装Docker的时候会提示你装）
-3. 想用GPU加速还得装nvidia-docker
-
-## 怎么跑起来
 
 ### CPU版（大部分人用这个）
 
