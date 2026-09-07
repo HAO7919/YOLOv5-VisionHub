@@ -1,0 +1,96 @@
+# YOLOv5-VisionHub Dockerfile (超轻量版)
+# 用alpine基础镜像 + 极致清理，尽量压小
+# 注意：alpine上PyQt5可能有兼容性问题，出问题就换回slim版
+#
+# CPU版: docker build -t yolov5-visionhub:lite .
+# GPU版: docker build --build-arg DEVICE=gpu -t yolov5-visionhub:lite-gpu .
+
+ARG DEVICE=cpu
+
+# ========== 构建阶段 ==========
+FROM python:3.10-alpine AS builder
+
+WORKDIR /build
+
+# 安装编译依赖
+RUN apk add --no-cache --virtual .build-deps \
+    gcc \
+    g++ \
+    musl-dev \
+    libffi-dev \
+    openssl-dev \
+    cmake \
+    make \
+    git
+
+# 复制requirements
+COPY requirements.txt .
+
+# 安装依赖到单独目录
+RUN pip install --no-cache-dir --prefix=/install -r requirements.txt
+
+# 根据设备类型安装PyTorch
+FROM builder AS builder-cpu
+RUN pip install --no-cache-dir --prefix=/install torch torchvision --index-url https://download.pytorch.org/whl/cpu
+
+FROM builder AS builder-gpu
+RUN pip install --no-cache-dir --prefix=/install torch torchvision --index-url https://download.pytorch.org/whl/cu118
+
+FROM builder-${DEVICE} AS builder-final
+
+# 极致清理：删掉所有不需要的东西
+RUN find /install -type d -name "__pycache__" -exec rm -rf {} + 2>/dev/null || true \
+    && find /install -type d -name "tests" -exec rm -rf {} + 2>/dev/null || true \
+    && find /install -type d -name "test" -exec rm -rf {} + 2>/dev/null || true \
+    && find /install -name "*.pyc" -delete 2>/dev/null || true \
+    && find /install -name "*.pyo" -delete 2>/dev/null || true \
+    && find /install -name "*.pyd" -exec strip --strip-unneeded {} + 2>/dev/null || true \
+    && find /install -name "*.so" -exec strip --strip-unneeded {} + 2>/dev/null || true \
+    && rm -rf /install/lib/python3.10/site-packages/torch/test \
+    && rm -rf /install/lib/python3.10/site-packages/torch/include \
+    && rm -rf /install/lib/python3.10/site-packages/torch/share \
+    && rm -rf /install/lib/python3.10/site-packages/torch/lib/libc10_cuda* 2>/dev/null || true \
+    && rm -rf /install/lib/python3.10/site-packages/torchvision/models \
+    && rm -rf /install/lib/python3.10/site-packages/torchvision/datasets \
+    && rm -rf /install/lib/python3.10/site-packages/numpy/tests \
+    && rm -rf /install/lib/python3.10/site-packages/pip \
+    && rm -rf /install/lib/python3.10/site-packages/setuptools \
+    && rm -rf /install/lib/python3.10/site-packages/wheel \
+    || true
+
+# ========== 运行阶段 ==========
+FROM python:3.10-alpine AS runtime
+
+LABEL maintainer="HAO7919"
+LABEL description="YOLOv5-VisionHub - Lite version"
+
+# 只装运行时需要的系统库
+RUN apk add --no-cache \
+    libgl \
+    glib \
+    libxkbcommon \
+    dbus \
+    fontconfig \
+    libx11 \
+    libxext \
+    libstdc++ \
+    && rm -rf /var/cache/apk/*
+
+# 从构建阶段复制依赖
+COPY --from=builder-final /install /usr/local
+
+# 复制源代码
+COPY . /app
+
+WORKDIR /app
+
+# 最后清理一遍
+RUN find /app -type d -name "__pycache__" -exec rm -rf {} + 2>/dev/null || true \
+    && find /app -name "*.pyc" -delete 2>/dev/null || true
+
+# 环境变量
+ENV QT_QPA_PLATFORM=xcb
+ENV DISPLAY=:0
+ENV PYTHONUNBUFFERED=1
+
+CMD ["python", "main.py"]
