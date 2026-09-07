@@ -25,7 +25,7 @@ YOLOv5 可视化检测系统 - 桌面版目标检测工具
 ### 直接使用（推荐）
 
 1. 下载最新的 Release 包
-2. 解压到任意目录
+2. 解压到任意目录（路径不要有中文）
 3. 双击 `YOLO检测工具.exe` 启动
 4. 不需要安装 Python、PyTorch 等环境
 
@@ -36,7 +36,13 @@ YOLOv5 可视化检测系统 - 桌面版目标检测工具
 git clone https://github.com/HAO7919/YOLOv5-VisionHub.git
 cd YOLOv5-VisionHub
 
-# 安装依赖
+# 安装 PyTorch（必须先装，根据是否有GPU选择）
+# CPU版:
+pip install torch torchvision --index-url https://download.pytorch.org/whl/cpu
+# GPU版(CUDA 11.8):
+pip install torch torchvision --index-url https://download.pytorch.org/whl/cu118
+
+# 安装其他依赖
 pip install -r requirements.txt
 
 # 运行
@@ -51,28 +57,42 @@ python main.py
 
 ```
 YOLOv5-VisionHub/
-├── main.py              # 程序入口
-├── main_window.py       # 主窗口界面
-├── detector.py          # 检测引擎封装
-├── screen_capture.py    # 屏幕捕获
-├── theme.py             # 主题样式
-├── config.py            # 配置管理
-├── i18n.py              # 多语言支持
-├── launcher.py          # 智能启动器
+├── main.py              # 程序入口（启动画面、单实例锁）
+├── main_window.py       # 主窗口界面（所有交互逻辑）
+├── detector.py          # 检测引擎封装（模型加载、推理、画框）
+├── screen_capture.py    # 屏幕实时检测
+├── theme.py             # 主题样式（浅色/深色、弹窗动画）
+├── config.py            # 配置管理（读写config.json）
+├── i18n.py              # 多语言支持（9种语言）
+├── launcher.py          # 智能启动器（环境检测）
 ├── requirements.txt     # Python 依赖
-├── models/              # 模型文件目录
+├── run.bat              # Windows 一键启动脚本
+├── start.sh             # Linux/Mac 启动脚本
+├── yolov5_app.spec      # PyInstaller 打包配置
+├── build_exe.bat        # Windows 一键打包脚本
+├── Dockerfile           # Docker 容器化支持
+├── models/              # 模型文件目录（.gitkeep占位，用户自己放模型）
 ├── assets/              # 图标资源
-└── torch_cache/         # 旧版模型支持
+├── torch_cache/         # 旧版模型兼容支持
+├── docs/                # 项目主页（GitHub Pages）
+├── .github/workflows/   # CI 自动测试和 Pages 部署
+├── .gitignore
+├── .gitattributes
+├── LICENSE              # GPL-3.0
+└── README.md
 ```
 
 ## 打包 exe
 
 ```bash
+# 安装 PyInstaller
 pip install pyinstaller
-pyinstaller yolov5_app.spec --clean --noconfirm
+
+# 一键打包（自动复制模型、清理私人文件）
+build_exe.bat
 ```
 
-打包后把 `models/`、`torch_cache/`、`assets/` 复制到 exe 旁边。
+打包完成后，`dist/YOLO检测工具/` 目录就是完整的程序，直接压缩发给别人即可。别人解压后双击 exe 就能用，不需要装任何环境。
 
 ## 许可证
 
