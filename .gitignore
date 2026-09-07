@@ -27,8 +27,8 @@ dist/
 *.exe
 
 # 模型文件（太大，不上传）
-models/*.pt
-models/*.pth
+*.pt
+*.pth
 !models/.gitkeep
 
 # 输出文件

@@ -93,7 +93,7 @@ YOLOv5-VisionHub/
 ├── detector.py          # Detection engine (model loading, inference, drawing)
 ├── screen_capture.py    # Real-time screen detection
 ├── theme.py             # Theme styles (light/dark, dialog animations)
-├── config.py            # Configuration management (read/write config.json)
+├── config.py            # Configuration management
 ├── i18n.py              # Multi-language support (9 languages)
 ├── launcher.py          # Smart launcher (environment detection)
 ├── requirements.txt     # Python dependencies
@@ -101,12 +101,16 @@ YOLOv5-VisionHub/
 ├── start.sh             # Linux/Mac launch script
 ├── yolov5_app.spec      # PyInstaller build configuration
 ├── build_exe.bat        # Windows one-click build script
-├── Dockerfile           # Docker container support
+├── Dockerfile           # Docker image (slim)
+├── Dockerfile.lite      # Docker image (alpine, smaller)
+├── docker-compose.yml   # Docker compose configuration
+├── DOCKER.md            # Docker usage guide
+├── .dockerignore        # Docker build ignore rules
 ├── models/              # Model files directory (.gitkeep placeholder)
 ├── assets/              # Icon resources
-├── torch_cache/         # Legacy model compatibility
 ├── docs/                # Project homepage (GitHub Pages)
-├── .github/workflows/   # CI auto-test and Pages deployment
+├── screenshots/         # UI screenshots
+├── .github/workflows/   # CI auto-test
 ├── .gitignore
 ├── .gitattributes
 ├── LICENSE              # MIT

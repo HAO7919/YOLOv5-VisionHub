@@ -93,7 +93,7 @@ YOLOv5-VisionHub/
 ├── detector.py          # 检测引擎封装（模型加载、推理、画框）
 ├── screen_capture.py    # 屏幕实时检测
 ├── theme.py             # 主题样式（浅色/深色、弹窗动画）
-├── config.py            # 配置管理（读写config.json）
+├── config.py            # 配置管理
 ├── i18n.py              # 多语言支持（9种语言）
 ├── launcher.py          # 智能启动器（环境检测）
 ├── requirements.txt     # Python 依赖
@@ -101,15 +101,21 @@ YOLOv5-VisionHub/
 ├── start.sh             # Linux/Mac 启动脚本
 ├── yolov5_app.spec      # PyInstaller 打包配置
 ├── build_exe.bat        # Windows 一键打包脚本
-├── Dockerfile           # Docker 容器化支持
+├── Dockerfile           # Docker 镜像（slim版）
+├── Dockerfile.lite      # Docker 镜像（alpine版，更小）
+├── docker-compose.yml   # Docker compose 配置
+├── DOCKER.md            # Docker 使用说明
+├── .dockerignore        # Docker 构建忽略规则
 ├── models/              # 模型文件目录（.gitkeep占位，用户自己放模型）
 ├── assets/              # 图标资源
-├── torch_cache/         # 旧版模型兼容支持
 ├── docs/                # 项目主页（GitHub Pages）
-├── .github/workflows/   # CI 自动测试和 Pages 部署
+├── screenshots/         # 界面截图
+├── .github/workflows/   # CI 自动测试
 ├── .gitignore
 ├── .gitattributes
 ├── LICENSE              # MIT
+└── README.md
+```
 └── README.md
 ```
 
