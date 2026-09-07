@@ -47,6 +47,8 @@ output/
 config.json
 *.log
 .yolov5_desktop/
+full_log.txt
+yolov5_app.log
 
 # IDE
 .vscode/
@@ -65,11 +67,25 @@ desktop.ini
 *.bak
 *.old
 _*.py
-
-# 本地文件
+_apply_i18n.py
+build_release.py
+build.bat
 python_path.txt
-full_log.txt
-yolov5-desktop-release/
 test_img.*
-*.pt
-*.pth
+
+# 打包产物
+*.zip
+*.tar.gz
+release/
+yolov5-desktop-release/
+
+# 推广文章（不放在代码仓库）
+*CSDN*.md
+*推广*.md
+*发布文章*.md
+
+# torch缓存
+torch_cache/
+
+# 本地测试
+test_img.*
