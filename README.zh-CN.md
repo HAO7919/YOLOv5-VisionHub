@@ -109,7 +109,7 @@ YOLOv5-VisionHub/
 ├── .github/workflows/   # CI 自动测试和 Pages 部署
 ├── .gitignore
 ├── .gitattributes
-├── LICENSE              # GPL-3.0
+├── LICENSE              # MIT
 └── README.md
 ```
 
@@ -127,9 +127,9 @@ build_exe.bat
 
 ## 许可证
 
-GNU General Public License v3.0 (GPL-3.0)
+MIT License
 
-本项目采用 GPL-3.0 协议，禁止用于商业售卖。修改或分发本软件时必须保持开源并使用相同协议。
+本项目采用 MIT 协议，可以自由使用、修改和分发，包括商用。只需保留原始版权声明即可。
 
 ## 免责声明
 

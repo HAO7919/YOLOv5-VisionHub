@@ -109,7 +109,7 @@ YOLOv5-VisionHub/
 ├── .github/workflows/   # CI auto-test and Pages deployment
 ├── .gitignore
 ├── .gitattributes
-├── LICENSE              # GPL-3.0
+├── LICENSE              # MIT
 └── README.md
 ```
 
@@ -127,9 +127,9 @@ After building, the `dist/YOLO检测工具/` directory is the complete program. 
 
 ## License
 
-GNU General Public License v3.0 (GPL-3.0)
+MIT License
 
-This project is licensed under GPL-3.0, commercial sale is prohibited. When modifying or distributing this software, you must keep it open source and use the same license.
+This project is licensed under MIT. You can use, modify, and distribute it freely, including for commercial purposes. Just keep the original copyright notice.
 
 ## Disclaimer
 
