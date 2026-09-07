@@ -1,7 +1,7 @@
 version: '3.8'
 
 services:
-  # CPU版本（体积小，约2GB）
+  # CPU版本（体积小，约1.5GB）
   yolov5-cpu:
     build:
       context: .
@@ -12,6 +12,7 @@ services:
     environment:
       - DISPLAY=${DISPLAY}
       - QT_X11_NO_MITSHM=1
+      - PYTHONUNBUFFERED=1
     volumes:
       - /tmp/.X11-unix:/tmp/.X11-unix
       - ./models:/app/models
@@ -19,7 +20,7 @@ services:
     network_mode: host
     restart: unless-stopped
 
-  # GPU版本（体积大，约5GB，需要nvidia-docker）
+  # GPU版本（体积大，约4GB，需要nvidia-docker）
   yolov5-gpu:
     build:
       context: .
@@ -32,6 +33,7 @@ services:
       - QT_X11_NO_MITSHM=1
       - NVIDIA_VISIBLE_DEVICES=all
       - NVIDIA_DRIVER_CAPABILITIES=all
+      - PYTHONUNBUFFERED=1
     volumes:
       - /tmp/.X11-unix:/tmp/.X11-unix
       - ./models:/app/models

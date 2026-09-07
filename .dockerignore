@@ -1,0 +1,45 @@
+# Git
+.git
+.gitignore
+.gitattributes
+
+# 打包产物
+dist/
+build/
+*.exe
+*.spec
+
+# 大文件（模型、压缩包）
+models/*.pt
+models/*.pth
+*.zip
+*.tar.gz
+release/
+
+# 文档和截图（Docker里不需要）
+docs/
+screenshots/
+*.md
+DOCKER.md
+
+# 缓存和日志
+__pycache__/
+*.pyc
+*.log
+.yolov5_desktop/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# 系统
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# 临时
+*.tmp
+*.bak
+*.old
